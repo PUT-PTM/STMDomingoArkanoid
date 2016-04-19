@@ -3,6 +3,18 @@
 *.ko
 *.obj
 *.elf
+*.bmp
+*.tlog
+*.log
+*.idb
+*.pdb
+*.suo
+*.ilk
+*.sdf
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.opensdf
 
 # Precompiled Headers
 *.gch
