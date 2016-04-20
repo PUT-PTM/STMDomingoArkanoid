@@ -11,9 +11,8 @@ SDL_Surface * pusty_obraz = NULL;
 SDL_Surface * belka_obraz = NULL;
 SDL_Surface * pilka_obraz = NULL;
 SDL_Surface * kafelek1_obraz = NULL;
-SDL_Event Zdarzenie;
 SDL_Surface * obrazek = NULL;
-//SDL_Surface ** tab=new SDL_Surface*[ile_kafelkow];//tablica obrazkow
+SDL_Event Zdarzenie;
 
 
 Uint32 colorkey2;
@@ -406,7 +405,6 @@ public:
 };
 
 
-vector <Kafelek> tablica_kafelkow;
 int main(int argc, char * args[])
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
@@ -420,12 +418,7 @@ int main(int argc, char * args[])
 	pilka_obraz = SDL_LoadBMP("pilka.bmp");
 	pusty_obraz = SDL_LoadBMP("pusty.bmp");
 	SDL_SetColorKey(pilka_obraz, SDL_SRCCOLORKEY, colorkey);
-	/*
-	for (int i = 0; i <ile_kafelkow; i++)
-	{
-	tab[i] = SDL_LoadBMP("zielony.bmp");
-	}
-	*/
+	
 
 	Kafelek kafelek2(12, 100, 3, 2);
 	//apply_surface(0, 0, tlo, ekran);
@@ -433,12 +426,7 @@ int main(int argc, char * args[])
 	Pilka pilka;
 	Kafelek kafelek1(7, 5, 3, 1);
 	SDL_SetColorKey(obrazek, SDL_SRCCOLORKEY, colorkey);//
-	/*
-	for (int i = 0; i < ile_kafelkow; i++)
-	{
-	tablica_kafelkow.push_back(new Kafelek(i%3, i+3/3, 1,i));
-	}
-	*/
+
 	SDL_FillRect(ekran, &ekran->clip_rect, SDL_MapRGB(ekran->format, 4, 1, 65));
 
 	while (Zdarzenie.type != SDL_KEYDOWN)
@@ -513,19 +501,18 @@ int main(int argc, char * args[])
 
 
 	}
+
+	
 	SDL_FreeSurface(obraz);
 	SDL_FreeSurface(belka_obraz);
 	SDL_FreeSurface(start_obraz);
 	SDL_FreeSurface(pilka_obraz);
+	SDL_FreeSurface(pusty_obraz);
+	SDL_FreeSurface(obrazek);
+	SDL_FreeSurface(kafelek1_obraz);
 
 	SDL_Quit();
-	/*
-	for (int i = 0; i < ile_kafelkow; i++)
-	{
-	SDL_FreeSurface(tab[i]);
-
-	}
-	*/
-	//delete tab;
+	
+	
 	return 0;
 }
