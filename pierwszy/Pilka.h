@@ -1,5 +1,5 @@
 #include <SDL.h>
-#include "Belka.h"
+#include "Mapa.h"
 
 
 
@@ -33,7 +33,7 @@ public:
 
 	}
 
-	void ruszaj(Belka belka, Kafelek kafelek)
+	void ruszaj(Belka belka, Mapa mapa1)
 	{
 		x += xMov;
 		y += yMov;
@@ -64,8 +64,20 @@ public:
 		dol = y + wysokosc_pilki;
 		mid = x + 0.5*szerokosc_pilki;
 		zdezenie_belka(belka);
+		int licznik = 0;
+		bool trafienie = 0;
 
-		zdezenie_kafelek(kafelek);
+		while (trafienie == 0 && licznik<mapa1.ile_kafelkow)
+		{
+			
+			if (mapa1.zycia[licznik]>0)
+			{
+				
+				
+				trafienie= zdezenie_kafelek(mapa1.tablica_kafelkow[licznik],licznik,mapa1);
+			}
+			licznik++;
+		}
 
 	}
 
@@ -80,35 +92,39 @@ public:
 		zaladuj(x, y, pilka_obraz, ekran);
 	}
 
-	void zdezenie_kafelek(Kafelek kafelek)
+	bool zdezenie_kafelek(Kafelek kafelek,int id,Mapa mapa)
 	{
-
+		bool trafienie = 0;
 		if ((y <= kafelek.dol&& y >= kafelek.y) || (dol <= kafelek.dol && dol >= kafelek.y))
 		{
 
 			if (((L >= kafelek.L && L <= kafelek.P) || (P >= kafelek.L && P <= kafelek.P)) && (y <= kafelek.dol&& y >= kafelek.dol - 1))
 			{
 				yMov = yMov + szybkoscY;
-				kafelek.zmniejsz_zycie();
+				mapa.zycia[id]--;
+				trafienie = 1;
 			}
 			else if (((L >= kafelek.L && L <= kafelek.P) || (P >= kafelek.L && P <= kafelek.P)) && (dol <= kafelek.y + 1 && dol >= kafelek.y))
 			{
 				yMov = yMov - szybkoscY;
-				kafelek.zmniejsz_zycie();
+				mapa.zycia[id]--;
+				trafienie = 1;
 			}
 			else if (P >= kafelek.L && P <= kafelek.L + 1 && ((y <= kafelek.dol&& y >= kafelek.y) || (dol <= kafelek.dol && dol >= kafelek.y)))
 			{
 				xMov = xMov - szybkoscX;
-				kafelek.zmniejsz_zycie();
+				mapa.zycia[id]--;
+				trafienie = 1;
 			}
 			else if (L <= kafelek.P && L >= kafelek.P - 1 && ((y <= kafelek.dol&& y >= kafelek.y) || (dol <= kafelek.dol && dol >= kafelek.y)))
 			{
 				xMov = xMov + szybkoscX;
-				kafelek.zmniejsz_zycie();
+				mapa.zycia[id]--;
+				trafienie = 1;
 			}
 
 		}
-
+		return trafienie;
 	}
 
 	void zdezenie_belka(Belka belka)

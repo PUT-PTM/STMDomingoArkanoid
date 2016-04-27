@@ -1,6 +1,6 @@
 #include <SDL.h>
 #include "Kafelek.h"
-
+#include <vector>
 
 
 

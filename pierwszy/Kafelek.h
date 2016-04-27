@@ -37,73 +37,41 @@ public:
 	int wysokosc_kafelka, szerokosc_kafelka;
 	int zycie;
 	int id_kafelka;
-	int kolor;
-	SDL_Surface * obrazek_kafelka = NULL;
-
-	Kafelek(int a, int b, int kolor, int id)
+	
+	Kafelek()
 	{
-		x = a * 75, y = b * 25;
+		x = 0;
+		y = 0;
+		L = 0;
+		P = 80;
+		dol = 25;
+		wysokosc_kafelka = 25;
+		szerokosc_kafelka = 80;
+		id_kafelka = 0;
+		zycie = 0;
+	}
+
+	Kafelek(int a, int b, int id)
+	{
+		x = a * 80, y = b * 25;
 		L = x;
 		wysokosc_kafelka = 25;
-		szerokosc_kafelka = 75;
+		szerokosc_kafelka = 80;
 		P = x + szerokosc_kafelka;
 		zycie = 1;
 		dol = y + wysokosc_kafelka;
-		int id_kafelka = id;
-		switch (kolor)
-		{
-		case 1:
-			obrazek_kafelka = SDL_LoadBMP("czerwony.bmp");
-			break;
-		case 2:
-			obrazek_kafelka = SDL_LoadBMP("zielony.bmp");
-			break;
-		case 3:
-			obrazek_kafelka = SDL_LoadBMP("zolty.bmp");
-			break;
-		case 4:
-			obrazek_kafelka = SDL_LoadBMP("niebieski.bmp");
-			break;
-		case 5:
-			obrazek_kafelka = SDL_LoadBMP("fioletowy.bmp");
-			break;
-		default:
-			obrazek_kafelka = SDL_LoadBMP("czerwony.bmp");
-			break;
-		}
-		SDL_SetColorKey(obrazek_kafelka, SDL_SRCCOLORKEY, colorkey);//
+		id_kafelka = id;
+
+
 	}
 
 	void zmniejsz_zycie()
 	{
-		zycie = zycie - 1;
-		zmienna--;
-		if (zycie == 0)
-		{
-			obrazek_kafelka = SDL_LoadBMP("pusty.bmp");
-			SDL_SetColorKey(obrazek_kafelka, SDL_SRCCOLORKEY, colorkey);
 
-
-		}
 	}
 	int podaj_zycie()
 	{
 		return zycie;
 	}
 
-	void pokaz()
-	{
-		if (zmienna == 1)
-		{
-			zaladuj(x, y, obrazek_kafelka, ekran);
-		}
-		else
-		{
-
-			zaladuj(x, y, pusty_obraz, ekran);
-		}
-
-
-
-	}
 };
