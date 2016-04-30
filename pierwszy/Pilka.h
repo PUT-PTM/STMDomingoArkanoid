@@ -10,7 +10,7 @@ public:
 	float xMov, yMov;
 	int szerokosc_pilki, wysokosc_pilki;
 	float L, P, szybkoscX, szybkoscY, mid, dol;
-	const float V_start = 0.5;
+	float V_start = 0.5+0.5*(ile_kafelkow/50);
 
 
 
@@ -67,7 +67,7 @@ public:
 		int licznik = 0;
 		bool trafienie = 0;
 
-		while (trafienie == 0 && licznik<mapa1.ile_kafelkow)
+		while (trafienie == 0 && licznik<ile_kafelkow)
 		{
 			
 			if (mapa1.zycia[licznik]>0)
@@ -103,24 +103,37 @@ public:
 				yMov = yMov + szybkoscY;
 				mapa.zycia[id]--;
 				trafienie = 1;
+				ile_zywych--;
+				V_start = V_start - 0.01;
+				
 			}
 			else if (((L >= kafelek.L && L <= kafelek.P) || (P >= kafelek.L && P <= kafelek.P)) && (dol <= kafelek.y + 1 && dol >= kafelek.y))
 			{
 				yMov = yMov - szybkoscY;
 				mapa.zycia[id]--;
 				trafienie = 1;
+				ile_zywych--;
+				V_start = V_start - 0.01;
+			
 			}
 			else if (P >= kafelek.L && P <= kafelek.L + 1 && ((y <= kafelek.dol&& y >= kafelek.y) || (dol <= kafelek.dol && dol >= kafelek.y)))
 			{
 				xMov = xMov - szybkoscX;
 				mapa.zycia[id]--;
 				trafienie = 1;
+				ile_zywych--;
+				V_start = V_start - 0.01;
+				
+				
 			}
 			else if (L <= kafelek.P && L >= kafelek.P - 1 && ((y <= kafelek.dol&& y >= kafelek.y) || (dol <= kafelek.dol && dol >= kafelek.y)))
 			{
 				xMov = xMov + szybkoscX;
 				mapa.zycia[id]--;
 				trafienie = 1;
+				ile_zywych--;
+				V_start = V_start - 0.01;
+			
 			}
 
 		}
@@ -129,7 +142,7 @@ public:
 
 	void zdezenie_belka(Belka belka)
 	{
-		if (y >= 545 && y <= 545.5)
+		if (y >= 545 && y <= 546)
 		{
 
 
@@ -146,43 +159,45 @@ public:
 				{
 					if (miejsce_odbicia<0 && miejsce_odbicia>-15)
 					{
-						xMov = -0.05;
-						szybkoscX = 0.1;
-						szybkoscY = 0.8;
-						yMov = -0.4;
+						xMov = -V_start*0.1;
+						szybkoscX = V_start*0.2;
+						szybkoscY = V_start*1.6;
+						yMov = -V_start*0.8;
+
+						
 					}
 					else if (miejsce_odbicia <= -15 && miejsce_odbicia>-30)
 					{
-						xMov = -0.1;
-						szybkoscX = 0.2;
-						szybkoscY = 0.76;
-						yMov = -0.33;
+						xMov = -V_start*0.2;
+						szybkoscX = V_start*0.4;
+						szybkoscY = V_start*1.52;
+						yMov = -V_start*0.66;
 					}
 					else if (miejsce_odbicia <= -30 && miejsce_odbicia>-45)
 					{
-						xMov = -0.15;
-						szybkoscX = 0.3;
-						szybkoscY = 0.7;
-						yMov = -0.35;
+						xMov = -V_start*0.3;
+						szybkoscX = V_start*0.6;
+						szybkoscY = V_start*1.4;
+						yMov = -V_start*0.7;
 					}
 					else if (miejsce_odbicia <= -45 && miejsce_odbicia>-60)
 					{
-						xMov = -0.25;
-						szybkoscX = 0.5;
-						szybkoscY = 0.60;
-						yMov = -0.30;
+						xMov = -V_start*0.5;
+						szybkoscX = V_start;
+						szybkoscY = V_start*1.2;
+						yMov = -V_start*0.6;
 					}
 					else if (miejsce_odbicia <= -60 && miejsce_odbicia>-80)
 					{
-						xMov = -0.35;
-						szybkoscX = 0.7;
-						szybkoscY = 0.5;
-						yMov = -0.25;
+						xMov = -V_start*0.7;
+						szybkoscX = V_start*1.4;
+						szybkoscY = V_start;
+						yMov = -V_start*0.5;
 					}
 					else
 					{
-						xMov = -0.25;
-						szybkoscX = 0.5;
+						xMov = -V_start*0.5;
+						szybkoscX = V_start;
 						szybkoscY = V_start;
 						yMov = -(V_start / 2);
 					}
@@ -194,43 +209,43 @@ public:
 				{
 					if (miejsce_odbicia>0 && miejsce_odbicia<15)
 					{
-						xMov = 0.05;
-						szybkoscX = 0.1;
-						szybkoscY = 0.8;
-						yMov = -0.4;
+						xMov = V_start*0.1;
+						szybkoscX = V_start*0.2;
+						szybkoscY = V_start*1.6;
+						yMov = -V_start*0.8;
 					}
 					else if (miejsce_odbicia >= 15 && miejsce_odbicia < 30)
 					{
-						xMov = 0.1;
-						szybkoscX = 0.2;
-						szybkoscY = 0.76;
-						yMov = -0.33;
+						xMov = V_start*0.2;
+						szybkoscX = V_start*0.4;
+						szybkoscY = V_start*1.52;
+						yMov = -V_start*0.66;
 					}
 					else if (miejsce_odbicia >= 30 && miejsce_odbicia < 45)
 					{
-						xMov = 0.15;
-						szybkoscX = 0.3;
-						szybkoscY = 0.7;
-						yMov = -0.35;
+						xMov = V_start*0.3;
+						szybkoscX = V_start*0.6;
+						szybkoscY = V_start*1.4;
+						yMov = -V_start*0.7;
 					}
 					else if (miejsce_odbicia >= 45 && miejsce_odbicia < 60)
 					{
-						xMov = 0.25;
-						szybkoscX = 0.5;
-						szybkoscY = 0.60;
-						yMov = -0.30;
+						xMov = V_start*0.5;
+						szybkoscX = V_start;
+						szybkoscY = V_start*1.2;
+						yMov = -V_start*0.6;
 					}
 					else if (miejsce_odbicia >= 60 && miejsce_odbicia < 80)
 					{
-						xMov = 0.35;
-						szybkoscX = 0.7;
-						szybkoscY = 0.5;
-						yMov = -0.25;
+						xMov = V_start*0.7;
+						szybkoscX = V_start*1.4;
+						szybkoscY = V_start;
+						yMov = -V_start*0.5;
 					}
 					else
 					{
-						xMov = 0.25;
-						szybkoscX = 0.5;
+						xMov = V_start*0.5;
+						szybkoscX = V_start;
 						szybkoscY = V_start;
 						yMov = -(V_start / 2);
 					}

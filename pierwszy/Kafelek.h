@@ -12,12 +12,12 @@ SDL_Surface * kafelek1_obraz = NULL;
 SDL_Surface * obrazek = NULL;
 Uint32 colorkey;
 Uint8 * klawisz = SDL_GetKeyState(NULL);
-
-
+int ile_kafelkow = 10;
+int ile_zywych = ile_kafelkow;
 
 bool wyjscie = false;
 int zmienna = 1;
-int ile_kafelkow = 10;
+
 
 extern const int szerokosc_obrazu = 800;
 extern const int wysokosc_obrazu = 600;
@@ -53,7 +53,7 @@ public:
 
 	Kafelek(int a, int b, int id)
 	{
-		x = a * 80, y = b * 25;
+		x =  a, y = b;
 		L = x;
 		wysokosc_kafelka = 25;
 		szerokosc_kafelka = 80;

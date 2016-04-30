@@ -56,9 +56,10 @@ int main(int argc, char * args[])
 
 	while (wyjscie == false)
 	{
-
-
-
+		if (ile_zywych == 0)
+		{
+			wyjscie = true;
+		}
 
 		while (SDL_PollEvent(&Zdarzenie))
 		{

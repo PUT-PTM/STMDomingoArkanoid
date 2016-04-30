@@ -26,7 +26,7 @@ public:
 		L = x;
 		P = x + szerokosc_belki;
 		mid = x + (0.5 * szerokosc_belki);
-		szybkosc = 0.6;
+		szybkosc = 0.5+0.3*(ile_kafelkow/50);
 
 		xMov = 0;
 		yMov = 0;
