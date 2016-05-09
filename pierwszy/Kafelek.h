@@ -12,7 +12,7 @@ SDL_Surface * kafelek1_obraz = NULL;
 SDL_Surface * obrazek = NULL;
 Uint32 colorkey;
 Uint8 * klawisz = SDL_GetKeyState(NULL);
-int ile_kafelkow = 10;
+int ile_kafelkow = 50;
 int ile_zywych = ile_kafelkow;
 
 bool wyjscie = false;
@@ -65,10 +65,7 @@ public:
 
 	}
 
-	void zmniejsz_zycie()
-	{
-
-	}
+	
 	int podaj_zycie()
 	{
 		return zycie;

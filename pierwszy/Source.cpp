@@ -29,6 +29,7 @@ int main(int argc, char * args[])
 	//Kafelek kafelek2(12, 100, 3, 2);
 	//Kafelek kafelek1(7, 5, 1, 1);
 	Mapa mapa1;
+	int nr_mapy = 0;
 
 	
 
@@ -58,7 +59,12 @@ int main(int argc, char * args[])
 	{
 		if (ile_zywych == 0)
 		{
-			wyjscie = true;
+			nr_mapy++;
+			for (int i = 0; i < ile_kafelkow; i++)
+			{
+				mapa1.zycia[i] = 1;
+			}
+			
 		}
 
 		while (SDL_PollEvent(&Zdarzenie))
@@ -66,7 +72,7 @@ int main(int argc, char * args[])
 
 			belka.Obsluga_wejscia();
 			pilka.obsluga_wejscia();
-			
+
 
 			if (Zdarzenie.type == SDL_QUIT)
 			{
@@ -80,16 +86,21 @@ int main(int argc, char * args[])
 
 		belka.ruszaj();
 		pilka.ruszaj(belka, mapa1);
-			
+
 
 
 
 		SDL_FillRect(ekran, &ekran->clip_rect, SDL_MapRGB(ekran->format, 4, 1, 65));
 		belka.show();
 		pilka.show();
-		//kafelek1.pokaz();
-		//kafelek2.pokaz();
-		mapa1.wyswietl_kafleki();
+		if (nr_mapy == 0)
+		{
+			mapa1.wyswietl_kafleki2();
+		}
+		else
+		{
+			mapa1.wyswietl_kafleki2();
+		}
 		if (SDL_Flip(ekran) == -1)
 		{
 			return 1;

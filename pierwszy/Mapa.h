@@ -1,6 +1,8 @@
 #include "Belka.h"
 #include <SDL.h>
 #include <vector>
+#include <ctime>
+
 
 using namespace std;
 
@@ -17,6 +19,7 @@ public:
 	SDL_Surface * kafelek_zolty;
 	SDL_Surface * kafelek_fioletowy;
 	int * zycia= new int[ile_kafelkow];
+	int kolor1, kolor2, kolor3, kolor4, kolor5;
 
 	Kafelek* tablica_kafelkow=new Kafelek[ile_kafelkow];
 	Mapa()
@@ -41,10 +44,42 @@ public:
 			Kafelek jeden(x*80, y*25, i);
 			tablica_kafelkow[i]= jeden;
 		}
-
+		srand(time(NULL));
+		kolor1 = rand() % 5;
+		_sleep(15);
+		kolor2 = rand() % 5;
+		_sleep(15);
+		kolor3 = rand() % 5;
+		_sleep(15);
+		kolor4 = rand() % 5;
+		_sleep(15);
+		kolor5 = rand() % 5;
 		
 	}
 
+	SDL_Surface* kolory(int numer)
+	{
+		if (numer == 0)
+		{
+			return kafelek_czerwony;
+		}
+		else if (numer == 1)
+		{
+			return kafelek_niebieski;
+		}
+		else if (numer == 2)
+		{
+			return kafelek_zielony;
+		}
+		else if (numer == 3)
+		{
+			return kafelek_zolty;
+		}
+		else
+		{
+			return kafelek_fioletowy;
+		}
+	}
 	
 
 	int zywe()
@@ -72,51 +107,96 @@ public:
 					int a = i/10;
 					if (a == 1)
 					{
-						zaladuj(i % 10 * 80, (a * 25), kafelek_czerwony, ekran);
+						zaladuj(i % 10 * 80, (a * 25), kolory(kolor2), ekran);
 					}
 					if (a == 2)
 					{
-						zaladuj(i % 10 * 80, (a * 25), kafelek_zolty, ekran);
+						zaladuj(i % 10 * 80, (a * 25), kolory(kolor3), ekran);
 					}
 					if (a == 3)
 					{
-						zaladuj(i % 10 * 80, (a * 25) , kafelek_niebieski, ekran);
+						zaladuj(i % 10 * 80, (a * 25), kolory(kolor4), ekran);
 					}
 					if (a == 4)
 					{
-						zaladuj(i % 10 * 80, (a * 25), kafelek_fioletowy, ekran);
+						zaladuj(i % 10 * 80, (a * 25), kolory(kolor5), ekran);
 					}
 
 					if (a == 5)
 					{
-						zaladuj(i % 10 * 80, (a * 25) , kafelek_zielony, ekran);
+						zaladuj(i % 10 * 80, (a * 25), kolory(kolor1), ekran);
 					}
 
 					if (a == 6)
 					{
-						zaladuj(i % 10 * 80, a * 25, kafelek_czerwony, ekran);
+						zaladuj(i % 10 * 80, a * 25, kolory(kolor2), ekran);
 					}
 
 					if (a == 7)
 					{
-						zaladuj(i % 10 * 80, a * 25, kafelek_zolty, ekran);
+						zaladuj(i % 10 * 80, a * 25, kolory(kolor3), ekran);
 					}
 
 					if (a == 8)
 					{
-						zaladuj(i % 10 * 80, a * 25, kafelek_niebieski, ekran);
+						zaladuj(i % 10 * 80, a * 25, kolory(kolor4), ekran);
 					}
 
 				}
 				else
 				{
-					zaladuj(i * 80,0, kafelek_zielony, ekran);
+					zaladuj(i * 80,0, kolory(kolor1), ekran);
 				}
 			}
 		}
 	}
 
+	void wyswietl_kafleki2()
+	{
 	
+
+		for (int i = 0; i < ile_kafelkow; i++)
+		{
+			if (zycia[i] > 0)
+			{
+				int a = i / 10;
+				if (a==0)
+				{
+					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor1), ekran);
+				}
+				else if (a==1)
+				{
+					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor2), ekran);
+				}
+				else if (a == 2)
+				{
+					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor3), ekran);
+				}
+				else if (a == 3)
+				{
+					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor4), ekran);
+				}
+				else if (a == 4)
+				{
+					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor5), ekran);
+				}
+
+				else if (a == 5)
+				{
+					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor1), ekran);
+				}
+				else if (a == 6)
+				{
+					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor2), ekran);
+				}
+				else if (a == 7)
+				{
+					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor3), ekran);
+				}
+			}
+		}
+	}
+
 
 
 
