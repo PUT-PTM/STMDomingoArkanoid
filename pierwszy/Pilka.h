@@ -10,7 +10,7 @@ public:
 	float xMov, yMov;
 	int szerokosc_pilki, wysokosc_pilki;
 	float L, P, szybkoscX, szybkoscY, mid, dol;
-	float V_start = 0.5+0.5*(ile_kafelkow/50);
+	float V_start = 0.5+0.5*(ile_zywych/ile_kafelkow);
 
 
 
@@ -31,6 +31,23 @@ public:
 		P = x + szerokosc_pilki;
 
 
+	}
+
+	void reset()
+	{
+		x = 387;
+		y = 538;
+
+		xMov = 0.5*V_start;
+		yMov = -(0.5*V_start);
+		szybkoscX = V_start;
+		szybkoscY = V_start;
+
+		szerokosc_pilki = 25;
+		wysokosc_pilki = 25;
+		dol = y + wysokosc_pilki;
+		L = x;
+		P = x + szerokosc_pilki;
 	}
 
 	void ruszaj(Belka belka, Mapa mapa1)
@@ -56,7 +73,9 @@ public:
 
 		else if (y + wysokosc_pilki > wysokosc_obrazu)
 		{
+			koniec_mapy = true;
 			wyjscie = true;
+			
 		}
 
 		L = x;
@@ -88,7 +107,6 @@ public:
 
 	void show()
 	{
-		//Show the dot 
 		zaladuj(x, y, pilka_obraz, ekran);
 	}
 

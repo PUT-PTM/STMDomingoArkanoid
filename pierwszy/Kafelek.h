@@ -10,10 +10,17 @@ SDL_Surface * belka_obraz = NULL;
 SDL_Surface * pilka_obraz = NULL;
 SDL_Surface * kafelek1_obraz = NULL;
 SDL_Surface * obrazek = NULL;
+SDL_Surface * kafelek_czerwony;
+SDL_Surface * kafelek_niebieski;
+SDL_Surface * kafelek_zielony;
+SDL_Surface * kafelek_zolty;
+SDL_Surface * kafelek_fioletowy;
+
 Uint32 colorkey;
 Uint8 * klawisz = SDL_GetKeyState(NULL);
 int ile_kafelkow = 50;
 int ile_zywych = ile_kafelkow;
+bool koniec_mapy = 0;
 
 bool wyjscie = false;
 int zmienna = 1;
@@ -37,7 +44,7 @@ public:
 	int wysokosc_kafelka, szerokosc_kafelka;
 	int zycie;
 	int id_kafelka;
-	
+
 	Kafelek()
 	{
 		x = 0;
@@ -53,7 +60,7 @@ public:
 
 	Kafelek(int a, int b, int id)
 	{
-		x =  a, y = b;
+		x = a, y = b;
 		L = x;
 		wysokosc_kafelka = 25;
 		szerokosc_kafelka = 80;
@@ -65,7 +72,63 @@ public:
 
 	}
 
-	
+	void mapa2(int i)
+	{
+		if (id_kafelka / 10 == 0)
+		{
+			x = id_kafelka % 10 * 80;
+			y = 0 * 25;
+			P = x + szerokosc_kafelka;
+			dol = y + wysokosc_kafelka;
+		}
+		else if (id_kafelka / 10 == 1)
+		{
+			x = id_kafelka % 10 * 80;
+			y = 1 * 25;
+			P = x + szerokosc_kafelka;
+			dol = y + wysokosc_kafelka;
+		}
+		else if (id_kafelka / 10 == 2)
+		{
+			x = id_kafelka % 10 * 80;
+			y = 4 * 25;
+			P = x + szerokosc_kafelka;
+			dol = y + wysokosc_kafelka;
+		}
+		else if (id_kafelka / 10 == 3)
+		{
+			x = id_kafelka % 10 * 80;
+			y = 5 * 25;
+			P = x + szerokosc_kafelka;
+			dol = y + wysokosc_kafelka;
+		}
+		else if (id_kafelka / 10 == 4)
+		{
+			x = id_kafelka % 10 * 80;
+			y = 7 * 25;
+			P = x + szerokosc_kafelka;
+			dol = y + wysokosc_kafelka;
+
+		}
+		else if (id_kafelka / 10 == 5)
+		{
+			x = id_kafelka % 10 * 80;
+			y = 8 * 25;
+			P = x + szerokosc_kafelka;
+			dol = y + wysokosc_kafelka;
+		}
+		else if (id_kafelka / 10 == 6)
+		{
+		
+			x = id_kafelka % 10 * 80;
+			y = 11 * 25;
+			P = x + szerokosc_kafelka;
+			dol = y + wysokosc_kafelka;
+		}
+	}
+
+		
+
 	int podaj_zycie()
 	{
 		return zycie;
