@@ -81,7 +81,19 @@ public:
 		}
 	}
 	
-
+	void reset_kolorow()
+	{
+		srand(time(NULL));
+		kolor1 = rand() % 5;
+		_sleep(15);
+		kolor2 = rand() % 5;
+		_sleep(15);
+		kolor3 = rand() % 5;
+		_sleep(15);
+		kolor4 = rand() % 5;
+		_sleep(15);
+		kolor5 = rand() % 5;
+	}
 	int zywe()
 	{
 		int licznik = 0;

@@ -23,6 +23,7 @@ int ile_zywych = ile_kafelkow;
 bool koniec_mapy = 0;
 
 bool wyjscie = false;
+bool wyjscie_z_gry = false;
 int zmienna = 1;
 
 

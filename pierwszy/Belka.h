@@ -26,12 +26,28 @@ public:
 		L = x;
 		P = x + szerokosc_belki;
 		mid = x + (0.5 * szerokosc_belki);
-		szybkosc = 0.5+0.3*(ile_kafelkow/50);
+		szybkosc = 0.7+0.3*(ile_kafelkow/50);
 
 		xMov = 0;
 		yMov = 0;
 	}
+	
+	void restart()
+	{
+		x = 325;
+		y = 560;
 
+
+		szerokosc_belki = 150;
+		wysokosc_belki = 25;
+		L = x;
+		P = x + szerokosc_belki;
+		mid = x + (0.5 * szerokosc_belki);
+		szybkosc = 0.5 + 0.3*(ile_kafelkow / 50);
+
+		xMov = 0;
+		yMov = 0;
+	}
 	void Obsluga_wejscia()
 	{
 		if (Zdarzenie.type == SDL_KEYDOWN)
@@ -42,7 +58,7 @@ public:
 			case SDLK_RIGHT: xMov = xMov + szybkosc; break;
 			}
 		}
-
+		
 		else if (Zdarzenie.type == SDL_KEYUP) {
 			//Adjust the velocity 
 			switch (Zdarzenie.key.keysym.sym)
