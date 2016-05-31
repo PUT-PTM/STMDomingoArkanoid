@@ -4,8 +4,8 @@
 <window>
 <fastViewData fastViewLocation="1024">
 <orientation position="512" view="org.eclipse.debug.ui.ExpressionView"/>
-<orientation position="512" view="org.coocox.builder.ui.views.ProjectView"/>
 <orientation position="512" view="org.coocox.component.ui.ComponentView"/>
+<orientation position="512" view="org.coocox.builder.ui.views.ProjectView"/>
 <orientation position="512" view="org.coocox.codebugger.trace.ui.traceview"/>
 <orientation position="512" view="org.eclipse.debug.ui.DebugView"/>
 <orientation position="512" view="org.eclipse.ui.console.ConsoleView"/>
@@ -24,7 +24,7 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/Mateusz/Desktop/Sterowanie/main.c" title="main.c" tooltip="C:/Users/Mateusz/Desktop/Sterowanie/main.c" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/Users/mateu/Desktop/materiały/programy/STMDomingoArkanoid/Sterowanie/main.c" title="main.c" tooltip="C:/Users/mateu/Desktop/materiały/programy/STMDomingoArkanoid/Sterowanie/main.c" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/stm32f429_project/main.c"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="231" selectionTopPixel="0"/>
 </editor>
