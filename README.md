@@ -16,6 +16,12 @@ of tiles. Possibility to use STM32F407 Discovery as keyboard (gamepad isn't work
 Bonuses: revert paddle direction, change ball speed, shooting, lengthen or reduce length of paddle.
 Rewrite project to SDL 2.0, to make it compatibile with gamepads.
 
+##If u want to use accelerometer:
+1. Take STM32F407VG and connect miniUSB to USB.
+2. Open CooCox and flash program to STM.
+3. Connect microUSB to USB.
+4. Enjoy the game. 
+
 ##Credits
 Project executing by:
 Mateusz Byczkowski & Bartosz Dominiak
