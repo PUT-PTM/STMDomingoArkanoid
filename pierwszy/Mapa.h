@@ -13,11 +13,6 @@ public:
 	
 	
 	
-	SDL_Surface * kafelek_czerwony;
-	SDL_Surface * kafelek_niebieski;
-	SDL_Surface * kafelek_zielony;
-	SDL_Surface * kafelek_zolty;
-	SDL_Surface * kafelek_fioletowy;
 	int * zycia= new int[ile_kafelkow];
 	int kolor1, kolor2, kolor3, kolor4, kolor5;
 
@@ -54,6 +49,11 @@ public:
 		kolor4 = rand() % 5;
 		_sleep(15);
 		kolor5 = rand() % 5;
+
+		for (int i = 0; i < ile_kafelkow; i++)
+		{
+		//	tablica_kafelkow[i].mapa2(i); //chwilowo
+		}
 		
 	}
 
@@ -81,7 +81,19 @@ public:
 		}
 	}
 	
-
+	void reset_kolorow()
+	{
+		srand(time(NULL));
+		kolor1 = rand() % 5;
+		_sleep(15);
+		kolor2 = rand() % 5;
+		_sleep(15);
+		kolor3 = rand() % 5;
+		_sleep(15);
+		kolor4 = rand() % 5;
+		_sleep(15);
+		kolor5 = rand() % 5;
+	}
 	int zywe()
 	{
 		int licznik = 0;
@@ -148,53 +160,56 @@ public:
 					zaladuj(i * 80,0, kolory(kolor1), ekran);
 				}
 			}
+			
 		}
 	}
 
 	void wyswietl_kafleki2()
 	{
 	
+		for (int i = 0; i < ile_kafelkow; i++)
+		{
+			//zycia[i] = 1;
+			//tablica_kafelkow[i].mapa2(i);
+		}
 
 		for (int i = 0; i < ile_kafelkow; i++)
 		{
 			if (zycia[i] > 0)
 			{
-				int a = i / 10;
-				if (a==0)
-				{
-					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor1), ekran);
-				}
-				else if (a==1)
-				{
-					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor2), ekran);
-				}
-				else if (a == 2)
-				{
-					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor3), ekran);
-				}
-				else if (a == 3)
-				{
-					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor4), ekran);
-				}
-				else if (a == 4)
-				{
-					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor5), ekran);
-				}
 
-				else if (a == 5)
+				if (i / 10 == 0)
 				{
-					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor1), ekran);
+					zaladuj(i % 10 * 80, 0 * 25, kolory(kolor1), ekran);
 				}
-				else if (a == 6)
+				else if (i / 10 == 1)
 				{
-					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor2), ekran);
+					zaladuj(i % 10 * 80, (1 * 25), kolory(kolor2), ekran);
 				}
-				else if (a == 7)
+				else if (i / 10 == 2)
 				{
-					zaladuj(i % 10 * 80, i % 8 * 25, kolory(kolor3), ekran);
+					zaladuj(i % 10 * 80, (4 * 25), kolory(kolor3), ekran);
+				}
+				else if (i / 10 == 3)
+				{
+					zaladuj(i % 10 * 80, (5 * 25), kolory(kolor4), ekran);
+				}
+				else if (i / 10 == 4)
+				{
+					zaladuj(i % 10 * 80, (7 * 25), kolory(kolor5), ekran);
+				}
+				else if (i / 10 == 5)
+				{
+					zaladuj(i % 10 * 80, (8 * 25), kolory(kolor1), ekran);
+				}
+				else if (i / 10 == 6)
+				{
+					zaladuj(i % 10 * 80, (11 * 25), kolory(kolor2), ekran);
 				}
 			}
 		}
+
+		
 	}
 
 

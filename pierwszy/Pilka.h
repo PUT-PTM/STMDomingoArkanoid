@@ -10,7 +10,7 @@ public:
 	float xMov, yMov;
 	int szerokosc_pilki, wysokosc_pilki;
 	float L, P, szybkoscX, szybkoscY, mid, dol;
-	float V_start = 0.5+0.5*(ile_kafelkow/50);
+	float V_start = 0.8 + 0.7*(ile_kafelkow / 50);
 
 
 
@@ -31,6 +31,23 @@ public:
 		P = x + szerokosc_pilki;
 
 
+	}
+
+	void reset()
+	{
+		x = 387;
+		y = 538;
+
+		xMov = 0.5*V_start;
+		yMov = -(0.5*V_start);
+		szybkoscX = V_start;
+		szybkoscY = V_start;
+
+		szerokosc_pilki = 25;
+		wysokosc_pilki = 25;
+		dol = y + wysokosc_pilki;
+		L = x;
+		P = x + szerokosc_pilki;
 	}
 
 	void ruszaj(Belka belka, Mapa mapa1)
@@ -56,7 +73,9 @@ public:
 
 		else if (y + wysokosc_pilki > wysokosc_obrazu)
 		{
+			koniec_mapy = true;
 			wyjscie = true;
+			
 		}
 
 		L = x;
@@ -88,7 +107,6 @@ public:
 
 	void show()
 	{
-		//Show the dot 
 		zaladuj(x, y, pilka_obraz, ekran);
 	}
 
@@ -100,6 +118,7 @@ public:
 
 			if (((L >= kafelek.L && L <= kafelek.P) || (P >= kafelek.L && P <= kafelek.P)) && (y <= kafelek.dol&& y >= kafelek.dol - 1))
 			{
+
 				yMov = yMov + szybkoscY;
 				mapa.zycia[id]--;
 				trafienie = 1;
@@ -109,6 +128,7 @@ public:
 			}
 			else if (((L >= kafelek.L && L <= kafelek.P) || (P >= kafelek.L && P <= kafelek.P)) && (dol <= kafelek.y + 1 && dol >= kafelek.y))
 			{
+				
 				yMov = yMov - szybkoscY;
 				mapa.zycia[id]--;
 				trafienie = 1;
@@ -118,6 +138,7 @@ public:
 			}
 			else if (P >= kafelek.L && P <= kafelek.L + 1 && ((y <= kafelek.dol&& y >= kafelek.y) || (dol <= kafelek.dol && dol >= kafelek.y)))
 			{
+				
 				xMov = xMov - szybkoscX;
 				mapa.zycia[id]--;
 				trafienie = 1;
@@ -128,6 +149,7 @@ public:
 			}
 			else if (L <= kafelek.P && L >= kafelek.P - 1 && ((y <= kafelek.dol&& y >= kafelek.y) || (dol <= kafelek.dol && dol >= kafelek.y)))
 			{
+				
 				xMov = xMov + szybkoscX;
 				mapa.zycia[id]--;
 				trafienie = 1;
@@ -142,7 +164,7 @@ public:
 
 	void zdezenie_belka(Belka belka)
 	{
-		if (y >= 545 && y <= 546)
+		if (y >= 545 && y <= 570)
 		{
 
 
